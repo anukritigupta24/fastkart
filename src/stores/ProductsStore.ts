@@ -21,7 +21,7 @@ class ProductsStore {
   }
 
   addProducts = (products: Array<Product>) => {
-    this.products = this.products.concat(products);
+    this.products = [...this.products, ...products];
   }
   
   fetchProducts = async () => {

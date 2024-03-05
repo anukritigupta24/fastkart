@@ -9,8 +9,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    {/* <MobXProvider> */}
       <App />
-    {/* </MobXProvider> */}
   </React.StrictMode>
 );

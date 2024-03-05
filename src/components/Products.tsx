@@ -6,6 +6,8 @@ import { observer } from 'mobx-react';
 import ProductsStore from "../stores/ProductsStore";
 import useThrottleFunction from "../customHooks/useThrottle";
 import CartStore from "../stores/CartStore";
+import { NavLink } from "react-router-dom";
+import CartButtonGroup from "./CartButtonGroup";
 
 const StyledContainer = styled(Container)`
     margin-top: 32px;
@@ -53,44 +55,40 @@ const ProductPrice = styled.div`
     font-weight: 600;
 `;
 
-const ProductToggler = styled.div`
-    margin-left: 4px;
-    width: 40px;
-    border: 1px solid lightblue;
-    padding: 4px;
-    text-align: center;
-    cursor: pointer;
+const ViewCartButton = styled.div`
+    position: fixed;
+    top: 10px;
+    right: 60px;
+`;
+
+const StyledNavLink = styled(NavLink)`
+    text-decoration: none;
+    color: black;
 `;
 
 const Products = observer(() => {
     const handleScroll = useThrottleFunction(() => {
-        console.log('scrolling');
+        console.log('handlescroll')
         ProductsStore.incrementSkip();
-        ProductsStore.fetchProducts();
-      }, 3000);
-
-    const handleAddToCart = (id: number) => {
-        CartStore.addItemToCart(id);
-    };
-
-    const handleDeleteFromCart = (id: number) => {
-        CartStore.deleteItemFromCart(id);
-    };
+      }, 1000);
 
     useEffect(() => {
         ProductsStore.fetchProducts();
-    }, []);
+    }, [ProductsStore.skip]);
 
     useEffect(() => {  
-    window.addEventListener('scroll', handleScroll);
-    
-    return () => {
-        window.removeEventListener('scroll', handleScroll);
-    }
+        window.addEventListener('scroll', handleScroll);
+        
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
     }, []);
 
     return(
         <StyledContainer fluid>
+            <ViewCartButton>
+                <Button variant="warning"><StyledNavLink to="/cart">View Cart</StyledNavLink></Button>
+            </ViewCartButton>
             <Row>
                 {
                     ProductsStore.products?.map((product: Product, index: number) => {
@@ -106,15 +104,9 @@ const Products = observer(() => {
                                         <ProductPrice>₹{product.price}</ProductPrice>
                                         {
                                             productQuantity ? (
-                                                <>
-                                                    <Stack direction="horizontal">
-                                                    <ProductToggler onClick={() => handleDeleteFromCart(product.id)}>-</ProductToggler>
-                                                    <ProductToggler onClick={() => handleAddToCart(product.id)}>+</ProductToggler>
-                                                    </Stack>
-                                                    <div>{productQuantity}</div>
-                                                </>
+                                                <CartButtonGroup productId={product.id} />
                                             ) : (
-                                                <Button variant="primary" size="sm" onClick={() => handleAddToCart(product.id)}>Add to Cart</Button>
+                                                <Button variant="primary" size="sm" onClick={() => CartStore.addItemToCart(product.id)}>Add to Cart</Button>
 
                                             )
                                         }

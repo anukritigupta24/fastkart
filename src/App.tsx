@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import Products from "./components/Products";
+import Cart from "./components/Cart";
 import { Container } from 'react-bootstrap';
 
 function App() {
@@ -8,9 +9,8 @@ function App() {
     <Container fluid>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Products />}>
-            <Route index path="/" element={<Products />} />
-          </Route>
+          <Route index path="/" element={<Products />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </Container>

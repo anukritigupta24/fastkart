@@ -1,6 +1,7 @@
-import { makeObservable, observable, action, toJS } from 'mobx';
+import { makeObservable, observable, action, toJS, computed } from 'mobx';
 // import { toJS } from 'mobx-react';
 import { CartItems } from '../types';
+import ProductsStore from './ProductsStore';
 
 class CartStore {
   // object of carts storing product id as key and quantity as value
@@ -10,18 +11,32 @@ class CartStore {
     makeObservable(this, {
         cartItems: observable,
         addItemToCart: action,
-        deleteItemFromCart: action
+        deleteItemFromCart: action,
+        totalCartValue: computed
     });
+
+    this.cartItems = JSON.parse(localStorage.getItem("cartItems") || '');
   }
 
   addItemToCart = (id: number) => {
     this.cartItems[id] = this.cartItems[id] && this.cartItems[id] >= 0 ? this.cartItems[id] + 1 : 1;
-    console.log(toJS(this.cartItems));
+    localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
   }
 
   deleteItemFromCart = (id: number) => {
     this.cartItems[id] = this.cartItems[id] && this.cartItems[id] >= 0 ? this.cartItems[id] - 1 : 0;
-    console.log(toJS(this.cartItems));
+    localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
+  }
+
+  get totalCartValue() {
+    let total = 0;
+    for(const [productId, quantity] of Object.entries(this.cartItems)) {
+      const product = ProductsStore.products.find((product) => product.id === Number(productId));
+
+      total += Number(product?.price)*Number(quantity);
+    }
+
+    return total;
   }
 }
 
