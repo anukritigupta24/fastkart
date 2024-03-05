@@ -6,3 +6,7 @@ export type Product = {
     price: Float32Array;
     description: string;
 };
+
+export type CartItems = {
+    [k: number]: number;
+}

@@ -1,18 +1,28 @@
-import { makeObservable, observable, action } from 'mobx';
+import { makeObservable, observable, action, toJS } from 'mobx';
+// import { toJS } from 'mobx-react';
+import { CartItems } from '../types';
 
 class CartStore {
-  products = [];
+  // object of carts storing product id as key and quantity as value
+  cartItems: CartItems = {};
 
   constructor() {
     makeObservable(this, {
-        products: observable,
-        fetchProducts: action
+        cartItems: observable,
+        addItemToCart: action,
+        deleteItemFromCart: action
     });
   }
 
-  fetchProducts = () => {
-    // this.cart.push(todo);
-  };
+  addItemToCart = (id: number) => {
+    this.cartItems[id] = this.cartItems[id] && this.cartItems[id] >= 0 ? this.cartItems[id] + 1 : 1;
+    console.log(toJS(this.cartItems));
+  }
+
+  deleteItemFromCart = (id: number) => {
+    this.cartItems[id] = this.cartItems[id] && this.cartItems[id] >= 0 ? this.cartItems[id] - 1 : 0;
+    console.log(toJS(this.cartItems));
+  }
 }
 
 export default new CartStore();
