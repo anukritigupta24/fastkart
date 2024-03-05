@@ -4,4 +4,5 @@ export type Product = {
     category: string;
     thumbnail: string;
     price: Float32Array;
+    description: string;
 };

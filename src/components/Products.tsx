@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { Container, Row, Col, Stack } from 'react-bootstrap';
+import { Container, Row, Col, Stack, Button } from 'react-bootstrap';
 import { Product } from "../types";
 import styled from "styled-components";
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 import ProductsStore from "../stores/ProductsStore";
-import { Table, Column } from'react-virtualized';
 import useThrottleFunction from "../customHooks/useThrottle";
 
 const StyledContainer = styled(Container)`
@@ -13,7 +12,6 @@ const StyledContainer = styled(Container)`
 
 const StyledCol = styled(Col)`
     // border: 1px solid gray;
-
 `;
 
 const StyledProduct = styled(Stack)`
@@ -23,13 +21,35 @@ const StyledProduct = styled(Stack)`
     height: 550px;
     margin: 40px;
     padding: 40px;
-    justify-content: flex-start;
+    justify-content: space-between;
 `;
 
 const StyledImg = styled.img`
     width: 100%;
     height: 60%;
     overflow: hidden;
+`;
+
+const ProductTitle = styled.div`
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+`;
+
+const ProductDescription = styled.div`
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+`;
+
+const ProductPriceStack = styled(Stack)`
+    justify-content: space-between;
+    margin: 0px 16px;
+`;
+
+const ProductPrice = styled.div`
+    font-size: 24px;
+    font-weight: 600;
 `;
 
 const Products = observer(() => {
@@ -60,28 +80,18 @@ const Products = observer(() => {
                         <StyledCol xs={12} md={3} key={product.id}>
                             <StyledProduct>
                                 <StyledImg src={product.thumbnail} />
-                                <div>{product.title}</div>
-                                <div>{product.price}</div>
-                                <div>Add to Cart</div>
+                                <ProductTitle>{product.title}</ProductTitle>
+                                <ProductDescription>{product.description}</ProductDescription>
+                                <ProductPriceStack direction="horizontal">
+                                    <ProductPrice>₹{product.price}</ProductPrice>
+                                    <Button variant="primary">Add to Cart</Button>
+                                </ProductPriceStack>
                             </StyledProduct>
                         </StyledCol>
                     ))
                 
                 }
             </Row>
-            {/* <Table height={400} width={600} rowHeight={200} rowCount={5} headerHeight={0} rowGetter={()=>{
-
-            }}>
-                <Column
-                dataKey="k"
-                width={30}
-                cellRenderer={(product: any)=>{
-                    return <StyledProduct>
-                    <StyledImg src={product.thumbnail} />
-                </StyledProduct>
-                }}
-                />
-            </Table> */}
         </StyledContainer>
     );
 });
