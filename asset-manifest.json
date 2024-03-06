@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/fastkart/static/css/main.ff02f4b5.css",
-    "main.js": "/fastkart/static/js/main.f15a6d9a.js",
+    "main.js": "/fastkart/static/js/main.61852b47.js",
     "index.html": "/fastkart/index.html",
     "main.ff02f4b5.css.map": "/fastkart/static/css/main.ff02f4b5.css.map",
-    "main.f15a6d9a.js.map": "/fastkart/static/js/main.f15a6d9a.js.map"
+    "main.61852b47.js.map": "/fastkart/static/js/main.61852b47.js.map"
   },
   "entrypoints": [
     "static/css/main.ff02f4b5.css",
-    "static/js/main.f15a6d9a.js"
+    "static/js/main.61852b47.js"
   ]
 }
