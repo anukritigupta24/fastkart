@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/anukritigupta24/fastkart/static/css/main.ff02f4b5.css",
+    "main.js": "/anukritigupta24/fastkart/static/js/main.25308848.js",
+    "index.html": "/anukritigupta24/fastkart/index.html",
+    "main.ff02f4b5.css.map": "/anukritigupta24/fastkart/static/css/main.ff02f4b5.css.map",
+    "main.25308848.js.map": "/anukritigupta24/fastkart/static/js/main.25308848.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff02f4b5.css",
+    "static/js/main.25308848.js"
+  ]
+}
