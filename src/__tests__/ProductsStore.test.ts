@@ -1,7 +1,6 @@
 import { act } from '@testing-library/react';
 import { PRODUCT_URL } from '../constants';
 import ProductsStore from '../stores/ProductsStore'
-import { log } from 'console';
 
 // Mock the fetch function
 global.fetch = jest.fn();

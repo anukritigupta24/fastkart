@@ -1,10 +1,8 @@
-import { Col, Container, Stack } from "react-bootstrap";
+import { Container, Stack } from "react-bootstrap";
 import CartStore from "../stores/CartStore";
 import styled from "styled-components";
-import { toJS } from 'mobx'
 import { observer } from 'mobx-react';
 import ProductsStore from "../stores/ProductsStore";
-import { Product } from "../types";
 import CartButtonGroup from "./CartButtonGroup";
 
 const Title = styled.div`

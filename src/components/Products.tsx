@@ -68,7 +68,6 @@ const StyledNavLink = styled(NavLink)`
 
 const Products = observer(() => {
     const handleScroll = useThrottleFunction(() => {
-        console.log('handlescroll')
         ProductsStore.incrementSkip();
       }, 1000);
 

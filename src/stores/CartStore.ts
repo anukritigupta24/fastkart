@@ -1,5 +1,4 @@
-import { makeObservable, observable, action, toJS, computed } from 'mobx';
-// import { toJS } from 'mobx-react';
+import { makeObservable, observable, action, computed } from 'mobx';
 import { CartItems } from '../types';
 import ProductsStore from './ProductsStore';
 

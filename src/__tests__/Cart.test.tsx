@@ -3,8 +3,6 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BrowserRouter } from 'react-router-dom';
 import Cart from '../components/Cart';
-import CartStore from '../stores/CartStore';
-import ProductsStore from '../stores/ProductsStore';
 
 // Mock the MobX stores
 jest.mock('../stores/CartStore', () => ({

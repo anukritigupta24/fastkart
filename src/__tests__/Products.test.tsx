@@ -3,7 +3,6 @@ import { render, screen, act, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { BrowserRouter } from 'react-router-dom';
 import Products from '../components/Products';
-import ProductsStore from '../stores/ProductsStore';
 import CartStore from '../stores/CartStore';
 
 jest.mock('../customHooks/useThrottle', () => jest.fn((callback) => callback));
