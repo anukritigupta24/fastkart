@@ -10,6 +10,9 @@ The project is built using React.js, TypeScript, MobX. The unit tests are writte
 - Changes made by user are persisted in local storage
 - Responsive design
 
+## Demo App
+Url: [https://anukritigupta24.github.io/fastkart/](https://anukritigupta24.github.io/fastkart/)
+
 ## Available Scripts
 
 In the project directory, you can run:
