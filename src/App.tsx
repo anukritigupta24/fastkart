@@ -7,7 +7,7 @@ import { Container } from 'react-bootstrap';
 function App() {
   return (
     <Container fluid>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route index path="/" element={<Products />} />
           <Route path="/cart" element={<Cart />} />

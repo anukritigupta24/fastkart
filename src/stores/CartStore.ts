@@ -15,7 +15,7 @@ class CartStore {
         totalCartValue: computed
     });
 
-    this.cartItems = JSON.parse(localStorage.getItem("cartItems") || '');
+    this.cartItems = JSON.parse(localStorage.getItem("cartItems") || '{}');
   }
 
   addItemToCart = (id: number) => {

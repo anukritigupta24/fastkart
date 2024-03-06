@@ -2,7 +2,7 @@
   "name": "fastkart",
   "version": "0.1.0",
   "homepage": "https://anukritigupta24.github.io/fastkart/",
-  "private": true,
+  "private": false,
   "dependencies": {
     "bootstrap": "^5.3.3",
     "jest": "^29.7.0",
