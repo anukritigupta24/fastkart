@@ -85,7 +85,7 @@ const Products = observer(() => {
     }, []);
 
     return(
-        <StyledContainer fluid>
+        <StyledContainer fluid data-testid="products-page">
             <ViewCartButton>
                 <Button variant="warning"><StyledNavLink to="/cart">View Cart</StyledNavLink></Button>
             </ViewCartButton>

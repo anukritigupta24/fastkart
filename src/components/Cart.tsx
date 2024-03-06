@@ -49,7 +49,7 @@ const StyledTitle = styled.div`
 
 const Cart = observer(() => {
     return (
-        <StyledContainer>
+        <StyledContainer data-testid="cart-page">
             <StyledStack>
                 <Title>Cart</Title>
                 {
