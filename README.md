@@ -1,5 +1,6 @@
 # Fastkart e-commerce demo app
 This is a small demo project of the e-commerce application called Fastkart which allows users to shop different items.
+The project is built using React.js, TypeScript, MobX. The unit tests are written using RTL and Jest to ensure that the workflows are running as per expectations.
 
 ## Features
 - User can add items to the cart
